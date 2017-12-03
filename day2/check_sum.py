@@ -28,12 +28,27 @@ def check_difference_min_to_max(l):
     return max(l) - min(l)
 
 
+def check_divisible_nums(l):
+    result = 0
+    for i in range(len(l)):
+        for j in range(len(l)):
+            if i == j:
+                next
+            if l[j] % l[i] == 0 and l[j] // l[i] > result:
+                result = l[j] // l[i]
+    return result
+
+
 if __name__ == '__main__':
     argv = sys.argv
     l = shape_raw_text(argv[1])
 
     my_sum = 0
     for i in l:
-        my_sum += check_difference_min_to_max(i)
+        # this line is for Part 1
+        # my_sum += check_difference_min_to_max(i)
+
+        # this line is for Part 2
+        my_sum += check_divisible_nums(i)
 
     print(my_sum)
