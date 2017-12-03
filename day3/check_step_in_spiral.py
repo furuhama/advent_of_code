@@ -2,6 +2,10 @@
 
 
 def check_nearest_odd_sq_num(n):
+    """
+    in this spiral, each spiral ends with a square of odd number
+    so, get which odd number spiral the target is in
+    """
     i = 1
     while i ** 2 < n:
         i += 2
@@ -10,6 +14,9 @@ def check_nearest_odd_sq_num(n):
 
 
 def check_extra_steps(n, i):
+    """
+    in a spiral, check where the target number is
+    """
     diff = i ** 2 - n
     # i is odd number
     half_len = (i - 1) // 2
