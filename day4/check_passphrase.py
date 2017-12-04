@@ -2,6 +2,9 @@
 
 
 def shape_raw_text(file):
+    """
+    get raw textfile & shape it to list of str
+    """
     f = open(file)
     data = f.read()
     f.close()
@@ -15,6 +18,9 @@ def shape_raw_text(file):
 
 
 def check_valid_phrase_count(word_list):
+    """
+    check whether each passphrase has the same phrase in it
+    """
     checked = []
     for e in word_list:
         if e in checked:
@@ -26,7 +32,10 @@ def check_valid_phrase_count(word_list):
 
 
 def get_char_vector(word):
-    lower_cases = [chr(i) for i in range(97, 97 + 26)]
+    """
+    make word into veector of every lower char
+    """
+    lower_cases = [chr(i) for i in range(97, 97 + 26)]  # list of lower chars
     result_vector = []
     for c in lower_cases:
         result_vector.append(word.count(c))
