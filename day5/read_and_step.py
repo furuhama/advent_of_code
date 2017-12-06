@@ -9,9 +9,21 @@ def read_num_and_get_next_target(arg_map, place):
     number = arg_map[place][1]
     next_place = place + number
 
-    # increase the number after move
-    arg_map[place][1] += 1
+    #
+    # part 1
+    #
 
+    # increase the number after move
+    # arg_map[place][1] += 1
+
+    #
+    # part 2
+    #
+
+    if arg_map[place][1] >= 3:
+        arg_map[place][1] -= 1
+    else:
+        arg_map[place][1] += 1
     return next_place
 
 
