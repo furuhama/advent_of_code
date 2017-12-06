@@ -65,9 +65,17 @@ def check_and_update_stock(stock_memory, block_list, f):
 
 
 if __name__ == '__main__':
-    # n = input()
-    # blocks = shape_raw_input_to_int_list(n)
-    blocks = shape_raw_input_to_int_list('my_input')
+    #
+    # Part 1
+    #
+
+    # blocks = shape_raw_input_to_int_list('my_input')
+
+    #
+    # Part 2
+    #
+
+    blocks = [1, 1, 14, 13, 12, 11, 10, 9, 8, 7, 7, 5, 5, 3, 3, 0]
     flag = False
     stock = []
     counts = 0
