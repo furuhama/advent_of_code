@@ -102,7 +102,6 @@ def shape_raw_input_to_list(file):
 
         # the line below returns list like ['boko', "**) -> 'hoge', 'fuga', 'piyo'"] (2 elements)
         temp = i.split(' (')
-        print(temp)
         node_and_weight.append(temp[0])
 
         # the line below returns list like ['**', " -> 'hoge', 'fuga', 'piyo'"] (2 elements)
