@@ -40,5 +40,37 @@ def raw_input_to_list(file):
     return node_lists
 
 
+def search_parent_nodes(node_list):
+    """
+    root node is definitely in first place of the node
+    so, this search every first node of input list
+
+    1. separate every nodes to first-node group and others
+
+    2. search every first-node group's node
+       if its name is not in others group, it is root node
+    """
+    first_node = []
+    others = []
+
+    for e in node_list:
+        first_node.append(e[0])
+        e.pop(0)
+
+        if len(e) > 0:
+            for i in range(len(e)):
+                if not e[i] in others:
+                    others.append(e[i])
+
+    print('first node: {}'.format(len(first_node)))
+    print('others: {}'.format(len(others)))
+
+    for e in first_node:
+        if not e in others:
+            print('the answer is...\n{}'.format(e))
+
+
 if __name__ == '__main__':
-    print(raw_input_to_list('input'))
+    node_list = raw_input_to_list('input')
+
+    search_parent_nodes(node_list)
