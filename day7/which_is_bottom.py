@@ -72,6 +72,12 @@ def search_parent_nodes(node_list):
         if not e in others:
             print('the answer is...\n{}'.format(e))
 
+
+# if __name__ == '__main__':
+#     node_list = raw_input_to_list('input')
+
+#     search_parent_nodes(node_list)
+
 #
 # Part 2
 #
@@ -91,14 +97,23 @@ def shape_raw_input_to_list(file):
     node_lists = []
 
     for i in data:
+        node_and_weight = []
         one_line = []
+
         # the line below returns list like ['boko', "**) -> 'hoge', 'fuga', 'piyo'"] (2 elements)
         temp = i.split(' (')
-        one_line.append(temp[0])
+        print(temp)
+        node_and_weight.append(temp[0])
+
+        # the line below returns list like ['**', " -> 'hoge', 'fuga', 'piyo'"] (2 elements)
+        temp = temp[1].split(')')
+        node_and_weight.append(temp[0])
+
+        one_line.append(node_and_weight)
 
         if '->' in temp[1]:
-            # the line below returns list like ['**', "'hoge', 'fuga', 'piyo'"] (2 elements)
-            temp = temp[1].split(') -> ')
+            # the line below returns list like [' ', "'hoge', 'fuga', 'piyo'"] (2 elements)
+            temp = temp[1].split('-> ')
             # the line below returns list like ['hoge', 'fuga', 'piyo'] (some elements)
             temp = temp[1].split(', ')
 
@@ -111,6 +126,6 @@ def shape_raw_input_to_list(file):
 
 
 if __name__ == '__main__':
-    node_list = raw_input_to_list('input')
+    node_list = shape_raw_input_to_list('test_input')
 
-    search_parent_nodes(node_list)
+    print(node_list)
