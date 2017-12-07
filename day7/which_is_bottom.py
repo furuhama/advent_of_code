@@ -25,12 +25,15 @@ def raw_input_to_list(file):
 
     for i in data:
         one_line = []
+        # the line below returns list like ['boko', "**) -> 'hoge', 'fuga', 'piyo'"] (2 elements)
         temp = i.split(' (')
         one_line.append(temp[0])
 
         if '->' in temp[1]:
-            # the line below returns list like ['hoge', 'fuga', 'piyo']
-            temp = temp[1].split(' -> ')[1].split(', ')
+            # the line below returns list like ['**', "'hoge', 'fuga', 'piyo'"] (2 elements)
+            temp = temp[1].split(') -> ')
+            # the line below returns list like ['hoge', 'fuga', 'piyo'] (some elements)
+            temp = temp[1].split(', ')
 
             for e in temp:
                 one_line.append(e)
@@ -68,6 +71,10 @@ def search_parent_nodes(node_list):
     for e in first_node:
         if not e in others:
             print('the answer is...\n{}'.format(e))
+
+#
+# Part 2
+#
 
 
 if __name__ == '__main__':
