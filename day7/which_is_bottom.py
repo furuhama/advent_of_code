@@ -124,6 +124,13 @@ def shape_raw_input_to_list(file):
     return node_lists
 
 
+def check_weight(branch):
+    """
+    check branch list & detect wrong wight branch
+    """
+    return True
+
+
 if __name__ == '__main__':
     node_list = shape_raw_input_to_list('test_input')
 
