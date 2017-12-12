@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# make & change directory
+
+# set variable
+current=$( pwd )
+
+# make directory
+mkdir $1
+
+# change directory
+cd "${current}/${1}"
+
