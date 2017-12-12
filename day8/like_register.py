@@ -13,8 +13,7 @@ def read_input(file):
     data = f.read()
     f.close()
 
-    data = data.splitlines()
-    data = [x.split(' ') for x in data]
+    data = [x.split(' ') for x in data.splitlines()]
 
     return data
 
