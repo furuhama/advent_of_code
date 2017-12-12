@@ -20,5 +20,42 @@ def read_input(file):
     return data
 
 
+def check_variable(var, dic):
+    """
+    check variables whether it is already exists in my dic or not
+    """
+    if var in dic:
+        return dic[var]
+    else:
+        # update dic as adding '{var: 0}'
+        dic[var] = 0
+        return dic[var]
+
+
+def exec_logic_operator(dic, var, operator, integer):
+    """
+    read logic operators in each line & exec it
+    this allows >, <, >=, <=, ==, !=
+    """
+    value = dic[var]
+    if operator == '>' and value > integer:
+        return True
+    elif operator == '<' and value < integer:
+        return True
+    elif operator == '>=' and value >= integer:
+        return True
+    elif operator == '<=' and value <= integer:
+        return True
+    elif operator == '==' and value == integer:
+        return True
+    elif operator == '!=' and value != integer:
+        return True
+    else:
+        return False
+
+
 if __name__ == '__main__':
-    print(read_input('test_input'))
+    my_dic = {}
+    f = read_input('test_input')
+
+    print(my_dic)
