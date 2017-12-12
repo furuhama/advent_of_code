@@ -23,16 +23,15 @@ def read_input(file):
 def check_variable(var, dic):
     """
     check variables whether it is already exists in my dic or not
+    if true, it returns the variable's value
+    else, it returns 0
     """
-    if var in dic:
-        return dic[var]
-    else:
+    if not var in dic:
         # update dic as adding '{var: 0}'
         dic[var] = 0
-        return dic[var]
 
 
-def exec_logic_operator(dic, var, operator, integer):
+def exec_logic_operator(var, dic, operator, integer):
     """
     read logic operators in each line & exec it
     this allows >, <, >=, <=, ==, !=
@@ -54,8 +53,41 @@ def exec_logic_operator(dic, var, operator, integer):
         return False
 
 
+def exec_order(var, dic, order, order_value):
+    """
+    exec order in each line
+    this allows 'inc', 'dec'
+    """
+    if order == 'inc':
+        dic[var] += order_value
+    elif order == 'dec':
+        dic[var] -= order_value
+    else:
+        print('Error! unexpected order!')
+
+
+def check_max_value(dic):
+    """
+    this returns max value in dict object
+    (it doesn't consider the time all the variables are negetive number)
+    """
+    bench = 0
+    for k in dic:
+        if dic[k] > bench:
+            bench = dic[k]
+    return bench
+
+
 if __name__ == '__main__':
     my_dic = {}
-    f = read_input('test_input')
+    f = read_input('input')
+
+    for e in f:
+        check_variable(e[4], my_dic)
+        if exec_logic_operator(e[4], my_dic, e[5], int(e[6])):
+            check_variable(e[0], my_dic)
+            exec_order(e[0], my_dic, e[1], int(e[2]))
 
     print(my_dic)
+
+    print(check_max_value(my_dic))
