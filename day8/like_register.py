@@ -78,16 +78,27 @@ def check_max_value(dic):
     return bench
 
 
+def check_highest_value(val, highest):
+    if val > highest:
+        highest = val
+    return highest
+
+
 if __name__ == '__main__':
     my_dic = {}
     f = read_input('input')
+    highest_value = 0
 
     for e in f:
         check_variable(e[4], my_dic)
         if exec_logic_operator(e[4], my_dic, e[5], int(e[6])):
             check_variable(e[0], my_dic)
             exec_order(e[0], my_dic, e[1], int(e[2]))
+            t = e[0]
+            highest_value = check_highest_value(my_dic[t], highest_value)
 
     print(my_dic)
 
     print(check_max_value(my_dic))
+
+    print(highest_value)
