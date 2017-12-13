@@ -1,4 +1,4 @@
-""" this is a code for Advent of Code 2017 Day7 """
+""" this is a code for Advent of Code 2017 Day8 """
 
 #
 # Part 1
