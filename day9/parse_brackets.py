@@ -43,11 +43,35 @@ def remove_after_bang(text_list, flag_list):
             flag = True
 
 
+def parse_garbages(text_list, flag_list):
+    depth_count = 0
+    start_point = 0
+    for i in range(len(text_list)):
+        if i == len(text_list) - 1 and depth_count > 0:
+            flag_list[start_point:] = (0,) * (len(text_list) - start_point)
+        elif text_list[i] == '<':
+            depth_count += 1
+            if depth_count == 1:
+                start_point = i
+        elif text_list[i] == '>':
+            depth_count -= 1
+            if depth_count == 0:
+                flag_list[start_point:(i + 1)] = (0,) * (i - start_point + 1)
+
+
+# def parse_score(text_list):
+#     score = 1
+#     sum_score = 0
+#     for i in range(len(text_list)):
+#         if text_list[i] ==
+
+
 if __name__ == '__main__':
     a = get_input()
     f_list = make_flag_list(a)
 
-    remove_after_bang(a, f_list)
+    # remove_after_bang(a, f_list)
+    parse_garbages(a, f_list)
 
     print(a)
     print(f_list)
