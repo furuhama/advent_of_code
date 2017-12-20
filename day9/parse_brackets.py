@@ -43,6 +43,14 @@ def remove_after_bang(text_list, flag_list):
             flag = True
 
 
+def reshape_text(text_list, flag_list):
+    l = []
+    for i in range(len(text_list)):
+        if flag_list[i] == 1:
+            l.append(text_list[i])
+    return l
+
+
 def parse_garbages(text_list, flag_list):
     depth_count = 0
     start_point = 0
@@ -72,11 +80,20 @@ def parse_score(text_list):
 
 
 if __name__ == '__main__':
+    # initialize
     a = get_input()
     f_list = make_flag_list(a)
 
-    # remove_after_bang(a, f_list)
-    # parse_garbages(a, f_list)
+    # remove !
+    remove_after_bang(a, f_list)
+    a = reshape_text(a, f_list)
+    f_list = make_flag_list(a)
 
+    # remove <>
+    parse_garbages(a, f_list)
+    a = reshape_text(a, f_list)
+    f_list = make_flag_list(a)
+
+    # check score
     score = parse_score(a)
     print(score)
