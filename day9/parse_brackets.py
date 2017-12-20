@@ -81,7 +81,8 @@ def parse_score(text_list):
 
 if __name__ == '__main__':
     # initialize
-    a = get_input()
+    # a = get_input()
+    a = read_file('my_input')
     f_list = make_flag_list(a)
 
     # remove !
