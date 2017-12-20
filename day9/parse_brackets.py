@@ -31,10 +31,23 @@ def make_flag_list(text):
     return [1 for i in range(len(text))]
 
 
-def remove_after_bang(text, flag_list):
-    pass
+def remove_after_bang(text_list, flag_list):
+    flag = True
+    for i in range(len(text_list)):
+        if flag:
+            if text_list[i] == '!':
+                flag_list[i] = 0
+                flag = False
+        else:
+            flag_list[i] = 0
+            flag = True
 
 
 if __name__ == '__main__':
     a = get_input()
-    print(make_flag_list(a))
+    f_list = make_flag_list(a)
+
+    remove_after_bang(a, f_list)
+
+    print(a)
+    print(f_list)
