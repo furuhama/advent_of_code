@@ -59,11 +59,16 @@ def parse_garbages(text_list, flag_list):
                 flag_list[start_point:(i + 1)] = (0,) * (i - start_point + 1)
 
 
-# def parse_score(text_list):
-#     score = 1
-#     sum_score = 0
-#     for i in range(len(text_list)):
-#         if text_list[i] ==
+def parse_score(text_list):
+    score = 1
+    sum_score = 0
+    for i in range(len(text_list)):
+        if text_list[i] == '{':
+            sum_score += score
+            score += 1
+        elif text_list[i] == '}':
+            score -= 1
+    return sum_score
 
 
 if __name__ == '__main__':
@@ -71,7 +76,7 @@ if __name__ == '__main__':
     f_list = make_flag_list(a)
 
     # remove_after_bang(a, f_list)
-    parse_garbages(a, f_list)
+    # parse_garbages(a, f_list)
 
-    print(a)
-    print(f_list)
+    score = parse_score(a)
+    print(score)
