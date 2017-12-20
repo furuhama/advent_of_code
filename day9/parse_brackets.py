@@ -55,16 +55,15 @@ def parse_garbages(text_list, flag_list):
     depth_count = 0
     start_point = 0
     for i in range(len(text_list)):
-        if i == len(text_list) - 1 and depth_count > 0:
+        if i == (len(text_list) - 1) and depth_count > 0:
             flag_list[start_point:] = (0,) * (len(text_list) - start_point)
         elif text_list[i] == '<':
             depth_count += 1
             if depth_count == 1:
                 start_point = i
         elif text_list[i] == '>':
-            depth_count -= 1
-            if depth_count == 0:
-                flag_list[start_point:(i + 1)] = (0,) * (i - start_point + 1)
+            flag_list[start_point:(i + 1)] = (0,) * (i - start_point + 1)
+            depth_count = 0
 
 
 def parse_score(text_list):
