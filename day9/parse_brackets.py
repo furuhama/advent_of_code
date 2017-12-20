@@ -54,6 +54,7 @@ def reshape_text(text_list, flag_list):
 def parse_garbages(text_list, flag_list):
     depth_count = 0
     start_point = 0
+    sum_of_non_cancelled = 0
     for i in range(len(text_list)):
         if i == (len(text_list) - 1) and depth_count > 0:
             flag_list[start_point:] = (0,) * (len(text_list) - start_point)
@@ -64,6 +65,8 @@ def parse_garbages(text_list, flag_list):
         elif text_list[i] == '>':
             flag_list[start_point:(i + 1)] = (0,) * (i - start_point + 1)
             depth_count = 0
+            sum_of_non_cancelled += i - start_point - 1
+    return sum_of_non_cancelled
 
 
 def parse_score(text_list):
@@ -90,7 +93,8 @@ if __name__ == '__main__':
     f_list = make_flag_list(a)
 
     # remove <>
-    parse_garbages(a, f_list)
+    s = parse_garbages(a, f_list)
+    print(s)
     a = reshape_text(a, f_list)
     f_list = make_flag_list(a)
 
